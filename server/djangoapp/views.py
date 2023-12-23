@@ -19,7 +19,9 @@ def index(request):
 
 
 def about_us(request):
-    return render(request, 'djangoapp/about_us.html')
+    context = {}
+    if request.method == "GET":
+        return render(request, 'djangoapp/about.html', context)
 
 
 def contact_us(request):
