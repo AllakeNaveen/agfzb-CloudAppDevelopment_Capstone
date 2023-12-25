@@ -5,29 +5,27 @@ from . import views
 
 app_name = 'djangoapp'
 urlpatterns = [
-    # route is a string contains a URL pattern
-    
-    # name the URL
-
     # path for about view
-    path(route='about/', view=views.about_us, name='about_us'),
-
+    path('about/', views.about, name='about'),
+    
     # path for contact us view
-     path(route='contact/', view=views.contact_us, name='contact_us'),
+    path('contact/', views.contact, name='contact'),
 
-    # path for signup view
-    path(route='signup/', view=views.signup_request, name='signup'),
-
+    # path for registration
+    path('signup/', views.registration_request, name='registration'),
+    
     # path for login
-     path(route='login/', view=views.login_request, name='login'),
+    path('login/', views.login_request, name='login'),
 
     # path for logout
-    path(route='logout/', view=views.logout_request, name='logout'),
+    path('logout/', views.logout_request, name='logout'),
 
-    path(route='', view=views.get_dealerships, name='index'),
+    path('', views.get_dealerships, name='index'),
 
-    # path for dealer reviews view
+    # path for dealer detail view
+    path('dealer/<int:dealer_id>/', views.get_dealer_details, name='dealer_details'),
 
     # path for add a review view
+    path('add_review/<int:id>/', views.add_review, name='add_review'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
